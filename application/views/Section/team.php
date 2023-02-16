@@ -8,14 +8,14 @@
         </div>
 
         <div class="row">
-
+        <?php foreach ($data_petugas as $hasil) : ?>
           <div class="col-lg-6">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
               <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>M. Tantowi Nur Anshori, S.H.</h4>
-                <span>K a s i r</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                <h4><?=$hasil['nama']?></h4>
+                <span><?=$hasil['loket']?></span>
+                <p><?=$hasil['deskripsi']?></p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -25,8 +25,9 @@
               </div>
             </div>
           </div>
+          <?php endforeach;  ?>
 
-          <div class="col-lg-6 mt-4 mt-lg-0">
+          <!-- <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
               <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
@@ -75,7 +76,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           
         </div>

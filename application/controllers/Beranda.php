@@ -18,8 +18,10 @@ class Beranda extends CI_Controller
 		$data['team']    = 'team';
 		$data['service'] = 'services';
 
+		$data['data_petugas'] = $this->db->get('tbl_petugas')->result_array();
+
 		$this->load->view('frontend/header', $data);
-		$this->load->view('frontend/kontent');
+		$this->load->view('frontend/kontent', $data);
 		$this->load->view('frontend/footer');
 	}
 }
