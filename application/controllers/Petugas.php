@@ -46,6 +46,32 @@ class Petugas extends CI_Controller
             'deskripsi'         => $this->input->post('deskripsi', true),
 			'updated_at'        => date('Y-m-d')
         );
+
+		//cek jika ada gambar yang akan di upload
+		$upload_image = $_FILES['image']['name'];
+
+		if ($upload_image) {
+			$config['allowed_types'] 	= 'gif|jpg|png';
+			$config['max_size']     	= '2048';
+			$config['upload_path']     	= './assets/img/profile';
+
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('image')) {
+				$old_image = $data['user']['image'];
+				if ($old_image != 'default.jpg') {
+					unlink(FCPATH . "assets/img/profile/" . $old_image);
+				}
+
+				$new_image = $this->upload->data('file_name');
+				$this->db->set('image', $new_image);
+			} else {
+				// echo $this->upload->display_errors();
+				$this->session->set_flashdata('nama_menu', 'Tipe File Tidak Support Atau File Terlalu Besar !!!');
+				redirect('user/edit');
+			}
+		}
+		
 		$this->db->where('id_petugas', $this->input->post('id_petugas', true));
         $this->db->update('tbl_petugas', $data);
         $this->session->set_flashdata('pesan', 'Di Ubah !!!');

@@ -39,6 +39,7 @@
                   <thead>
                     <tr>
                       <th scope="col">No</th>
+                      <th scope="col">Foto</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Loket</th>
                       <th scope="col">Deskripsi</th>
@@ -54,6 +55,7 @@
                   foreach ($data as $hasil) : ?>
                     <tr>
                       <td><?php echo $no++  ?></td>
+                      <td><img src="<?php echo base_url('assets/img/profile/') . $hasil['image']; ?>" height="100"></td>
                       <td><?php echo $hasil['nama']?></td>
                       <td><?php echo $hasil['loket']?></td>
                       <td><?php echo $hasil['deskripsi']?></td>
@@ -147,6 +149,22 @@
       <div class="modal-body">
       <form method="post" action="<?php echo base_url('petugas/update') ?>" enctype="multipart/form-data">
         <div class="modal-body">
+            <div class="form-group row">
+              <div class="col-sm-2"><strong>Picture</strong></div>
+              <div class="col-sm-10">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="<?php echo base_url('assets/img/profile/') . $hasil['image']; ?>" class="img-thumbnail">
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="custom-file">
+                      <input type="file" name="image" class="custom-file-input" id="image">
+                      <label class="custom-file-label" for="image">Pilih Gambar</label>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="form-group row">
               <label for="nama" class="col-sm-5 col-form-label">Nama</label>
               <div class="col-sm-7">
