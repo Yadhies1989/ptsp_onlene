@@ -19,4 +19,44 @@ class Pelayanan extends CI_Controller
         $this->load->view('frontend/informasi', $data);
         $this->load->view('frontend/footer');
     }
+
+    public function prosedur()
+    {
+        $data['title']   = 'PTSP PA Bojonegoro';
+        $data['informasi']   = 'prosedur';
+
+        $this->load->view('frontend/header', $data);
+        $this->load->view('frontend/informasi', $data);
+        $this->load->view('frontend/footer');
+    }
+
+    public function jadwalsidang()
+    {
+        $data['title']   = 'PTSP PA Bojonegoro';
+        $data['informasi']   = 'jadwalsidang';
+
+        $this->load->view('frontend/header', $data);
+        $this->load->view('frontend/informasi', $data);
+        $this->load->view('frontend/footer');
+    }
+
+    public function gugatanmandiri()
+    {
+        $data['title']   = 'PTSP PA Bojonegoro';
+        $data['pendaftaran']   = 'gugatanmandiri';
+
+        $this->load->view('frontend/header', $data);
+        $this->load->view('frontend/pendaftaran', $data);
+        $this->load->view('frontend/footer');
+    }
+
+    public function validasi()
+    {
+        $data['title']   = 'PTSP PA Bojonegoro';
+        $data['produk']   = 'validasi';
+
+        $this->load->view('frontend/header', $data);
+        $this->load->view('frontend/produk', $data);
+        $this->load->view('frontend/footer');
+    }
 }

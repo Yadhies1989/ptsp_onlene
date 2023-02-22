@@ -51,11 +51,28 @@
           <li><a class="nav-link scrollto" href="<?php echo base_url('v4') ?>/#about">About</a></li>
           <li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="<?php echo base_url('pelayanan/informasi') ?>">Informasi</a></li>
-              <li><a href="#">Pendaftaran</a></li>
+              <li class="dropdown"><a href="#"><span>Informasi</span><i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="<?php echo base_url('pelayanan/informasi') ?>">Persyaratan Berperkara</a></li>
+                  <li><a href="<?php echo base_url('pelayanan/prosedur') ?>">Prosedur Berperkara</a></li>
+                  <li><a href="<?php echo base_url('pelayanan/jadwalsidang') ?>">Jadwal Sidang</a></li>
+                  <li><a href="#">Video Conference</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Pendaftaran</span><i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="<?php echo base_url('pelayanan/gugatanmandiri') ?>">Gugatan Mandiri</a></li>
+                  <li><a href="#">Video Conference</a></li>
+                </ul>
+              </li>
               <li><a href="#">Kasir</a></li>
               <li><a href="#">Pengaduan</a></li>
-              <li><a href="#">Produk Pengadilan</a></li>
+              <li class="dropdown"><a href="#"><span>Produk Pengadilan</span><i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="<?php echo base_url('pelayanan/validasi') ?>">Validasi Akta Cerai</a></li>
+                  <li><a href="#">Video Conference</a></li>
+                </ul>
+              </li>
               <li><a href="#">e-Court</a></li>
             </ul>
           </li>
