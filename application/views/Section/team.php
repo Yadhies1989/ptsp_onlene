@@ -10,8 +10,8 @@
      <div class="row">
        <?php foreach ($data_petugas as $hasil) : ?>
          <div class="col-lg-6 mt-4">
-           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-             <div class="pic"><img src="<?php echo base_url('assets/img/profile/') . $hasil['image']; ?>" width="100" height="300" class="img-fluid" alt=""></div>
+           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+             <div class="pic"><img src="<?php echo base_url('assets/img/profile/') . $hasil['image']; ?>" class="img-fluid" alt=""></div>
              <div class="member-info">
                <h4><?= $hasil['nama'] ?></h4>
                <span><?= $hasil['loket'] ?></span>
