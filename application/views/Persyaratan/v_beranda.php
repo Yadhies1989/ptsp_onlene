@@ -52,7 +52,7 @@
                     <td><?php echo $hasil['nama_perkara'] ?></td>
                     <td><?php echo $hasil['syarat_perkara'] ?></td>
                     <td>
-                      <button data-toggle="modal" data-target="#update-persyaratan<?= $hasil['id_persyaratan']; ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                      <a href="<?php echo base_url('informasi/edit_update_data_persyaratan/' .$hasil['id_persyaratan']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <button data-toggle="modal" data-target="#delete-data<?= $hasil['id_persyaratan']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                     </td>
 
@@ -98,9 +98,10 @@
               <div class="row col-12">
                 <label for="syarat_perkara" class="col-sm-5 col-form-label col-form-label-sm">Isi Persyaratan</label>
                 <div class="col-sm-7">
-                  <!-- <textarea class="form-control form-control-sm" name="syarat_perkara" id="syarat_perkara" rows="3"></textarea> -->
                   <input name="about" type="hidden">
-                  <div id="editor-container"></div>
+                  <div id="editor-container">
+                    <div id="editor"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,45 +114,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal Update-->
-  <?php foreach ($data as $hasil) : ?>
-    <div class="modal fade" id="update-persyaratan<?= $hasil['id_persyaratan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-success">
-            <h5><i class="fas fa-plus-square"></i> Update Data Persyaratan Berperkara</h5>
-          </div>
-          <form method="post" action="<?php echo base_url('informasi/proses_update_data_persyaratan') ?>" enctype="multipart/form-data">
-            <div class="modal-body">
-              <div class="form-group row">
-                <div class="row col-12">
-                  <label for="nama_perkara" class="col-sm-5 col-form-label col-form-label-sm">Nama Perkara</label>
-                  <div class="col-sm-7">
-                    <input type="text" value="<?= $hasil['nama_perkara']; ?>" class="form-control form-control-sm" id="nama_perkara" name="nama_perkara" onkeyup="this.value = this.value.toUpperCase()" required>
-                    <input type="hidden" value="<?= $hasil['id_persyaratan']; ?>" id="id_persyaratan" name="id_persyaratan" >
-                  </div>
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="row col-12">
-                  <label for="syarat_perkara" class="col-sm-5 col-form-label col-form-label-sm">Isi Persyaratan</label>
-                  <div class="col-sm-7">
-                    <!-- <textarea type="text" class="form-control" id="syarat_perkara" name="syarat_perkara"><?= $hasil['syarat_perkara']; ?></textarea> -->
-                    <!-- <input name="about_edit" value="<?= $hasil['syarat_perkara']; ?>" type="hidden"> -->
-                    <div id="editor-container-edit"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button class="btn btn-success btn-lg" type="submit"><i class="fas fa-save"></i></button>
-              <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  <?php endforeach;  ?>
+ 
   <!-- Modal Hapus-->
   <?php foreach ($data as $hasil) : ?>
     <div class="modal fade" id="delete-data<?= $hasil['id_persyaratan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,15 +144,14 @@
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <!-- Initialize Quill editor -->
   <script>
-    var quill = new Quill('#editor-container', {
+    var quill = new Quill('#editor', {
       modules: {
         toolbar: [
           ['bold', 'italic'],
-          ['link', 'blockquote', 'code-block', 'image'],
           [{ list: 'ordered' }, { list: 'bullet' }]
         ]
       },
-      placeholder: 'Compose an epic...',
+      placeholder: 'Masukkan detail persyaratan..',
       theme: 'snow'
     });
     var form = document.querySelector('form');
@@ -197,15 +159,5 @@
       var about = document.querySelector('input[name=about]');
       about.value = JSON.stringify(quill.root.innerHTML);
     };
-
-    //show data to quill edit
-    var quill_edit = new Quill('#editor-container-edit', {
-        modules: { toolbar: [
-          ['bold', 'italic'],
-          ['link', 'blockquote', 'code-block', 'image'],
-          [{ list: 'ordered' }, { list: 'bullet' }]
-        ] },
-        theme: 'snow'
-    });
     
   </script>

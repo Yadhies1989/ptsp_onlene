@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    #editor-container {
+      height: 100%;
+      /* added these styles */
+      flex: 1;
+      display: flex; 
+      flex-direction: column;
+    }
+
+    #editor {
+      height: 100%;
+      /* added these styles */
+      flex: 1;
+      overflow-y: auto;
+      width: 100%;
+    }
+    #editor_edit {
+      height: 100%;
+      /* added these styles */
+      flex: 1;
+      overflow-y: auto;
+      width: 100%;
+    }
+    </style>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

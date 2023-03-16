@@ -14,6 +14,7 @@ class Pelayanan extends CI_Controller
     {
         $data['title']   = 'PTSP PA Bojonegoro';
         $data['informasi']   = 'informasi';
+        $data['data_persyaratan_berperkara'] = $this->db->get('tbl_persyaratan_berperkara')->result_array();
 
         $this->load->view('frontend/header', $data);
         $this->load->view('frontend/informasi', $data);

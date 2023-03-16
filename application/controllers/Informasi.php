@@ -35,14 +35,24 @@ class Informasi extends CI_Controller
 		redirect('informasi/persyaratan_berperkara');
 		
 	}
+	public function edit_update_data_persyaratan($id)
+	{
+		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['title'] = 'Edit Persyaratan Berperkara';
+		$data['data'] = $this->db->get_where('tbl_persyaratan_berperkara', ['id_persyaratan' => $id])->row_array();
+
+		$this->load->view('Template/navbar', $data);
+		$this->load->view('Template/sidebar', $data);
+		$this->load->view('Persyaratan/v_edit', $data);
+		$this->load->view('Template/footer');
+	}
 	public function proses_update_data_persyaratan()
 	{
 		$id_persyaratan = $this->input->post('id_persyaratan', true);
 		$data = array(
 			'nama_perkara'        		=> $this->input->post('nama_perkara', true),
-			'syarat_perkara'     		=> $this->input->post('syarat_perkara', true),
+			'syarat_perkara'     		=> $this->input->post('about_edit', true),
 		);
-
 
 		$this->db->update('tbl_persyaratan_berperkara', $data, array('id_persyaratan' => $id_persyaratan));
 
