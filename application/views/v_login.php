@@ -22,14 +22,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>PaBjn</a>
+    <a href="../../index2.html"><b>Login PTSP Online</b> PABJN</a>
     <?php echo $this->session->flashdata('pesan') ?>
   </div>
   
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login Untuk Memulai Aplikasi</p>
+      <p class="login-box-msg">Silahkan Login Untuk Memulai Aplikasi</p>
 
       <form action="<?= base_url ('welcome/');?>" method="post">
         <div class="input-group mb-3">
@@ -61,7 +61,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
@@ -74,7 +74,7 @@
         <!-- <a href="forgot-password.html">I forgot my password</a> -->
       </p>
       <p class="mb-0">
-        <a href="<?php echo base_url('welcome/registrasi');?>" class="text-center">Registrasi Pengguna Baru</a>
+        <!-- <a href="<?php echo base_url('welcome/registrasi');?>" class="text-center">Registrasi Pengguna Baru</a> -->
       </p>
     </div>
     <!-- /.login-card-body -->

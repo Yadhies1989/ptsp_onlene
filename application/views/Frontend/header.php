@@ -79,6 +79,7 @@
           <li><a class="nav-link scrollto" href="<?php echo base_url('v4') ?>/#services">Inovasi</a></li>
           <li><a class="nav-link scrollto" href="<?php echo base_url('v4') ?>/#team">Petugas</a></li>
           <li><a class="nav-link scrollto" href="<?php echo base_url('v4') ?>/#portfolio">Survey Pelayanan</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo base_url('/') ?>">Khusus KUA</a></li>
           <li><a class="getstarted scrollto" href="<?php echo base_url('v4') ?>/#about">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
