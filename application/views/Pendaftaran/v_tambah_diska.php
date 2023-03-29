@@ -36,9 +36,9 @@
                 <form method="post" action="<?php echo base_url('pendaftaran/proses_input_data_diska') ?>" enctype="multipart/form-data">
                     <div class="form-group row">
                       <div class="row col-12">
-                        <label for="jk_anak" class="col-sm-4 col-form-label col-form-label-sm">Anak yang kurang umur</label>
+                        <label for="jenis_permohonan" class="col-sm-4 col-form-label col-form-label-sm">Anak yang kurang umur</label>
                         <div class="col-sm-8">
-                          <select class="form-control custom-select" name="jk_anak" required>
+                          <select class="form-control custom-select" name="jenis_permohonan" required>
                             <option selected disabled>---Pilih---</option>
                             <option>Anak perempuan</option>
                             <option>Anak laki-Laki</option>
@@ -509,7 +509,7 @@
                     </div>
                   <div class="footer justify-content-between">
                     <button class="btn btn-success btn-lg" type="submit"><i class="fas fa-save"></i></button>
-                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
+                    <a href="<?php echo base_url('pendaftaran/diska') ?>" class="btn btn-danger btn-lg"><i class="fas fa-window-close"></i></a>
                   </div>
                 </form>
               

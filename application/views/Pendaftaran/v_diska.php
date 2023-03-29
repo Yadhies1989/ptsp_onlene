@@ -38,14 +38,15 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Nomor Perkara</th>
+                  <th scope="col">Wilayah KUA</th>
+                  <th scope="col">Anak yang kurang umur</th>
                   <th scope="col">Tanggal Daftar</th>
                   <th scope="col">Nama Pemohon 1</th>
                   <th scope="col">Nama Pemohon 2</th>
                   <th scope="col">Nama Anak</th>
                   <th scope="col">Nama Calon</th>
-                  <th scope="col">Progress</th>
-                  <th scope="col">Label</th>
+                  <th scope="col">Download Permohonan</th>
+                  <th scope="col">Kelengkapan Dokumen</th>
                   <th scope="col">Aksi</th>
 
                 </tr>
@@ -56,19 +57,69 @@
                 foreach ($data as $hasil) : ?>
                   <tr>
                     <td><?php echo $no++  ?></td>
-                    <td><?php echo $hasil['nomor_perkara'] ?></td>
-                    <td><?php echo $hasil['tgl_daftar'] ?></td>
+                    <td><?php echo $hasil['kode_kua'] ?></td>
+                    <td><?php echo $hasil['jenis_permohonan'] ?></td>
+                    <td><?php echo tanggal_indonesia_lengkap($hasil['tgl_daftar']); ?></td>
                     <td><?php echo $hasil['nama_p1'] ?></td>
                     <td><?php echo $hasil['nama_p2'] ?></td>
                     <td><?php echo $hasil['nama_anak'] ?></td>
                     <td><?php echo $hasil['nama_calon'] ?></td>
-                    <td>
-                      <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar bg-success" style="90%"></div>
-                      </div>
+                    <td width="150px">
+                        <a href="<?php echo base_url('pendaftaran/print_rtf_diska/' . $hasil['id_diska']) ?>" class="btn btn-primary btn-sm" title="Print Permohonan"><i class="fas fa-print"></i></a>
                     </td>
-                    <td></td>
-                    <td>
+                    <td width="150px">
+                      <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        <?php if($hasil['file_ktp_p1'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_ktp_p2'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_kk'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_akta_anak'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_akta_calon'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_ijazah_anak'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                      </div>
+                      KTP P1
+                      <?php if($hasil['file_ktp_p1'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p1/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p1/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      KTP P2
+                      <?php if($hasil['file_ktp_p2'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p2/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P2"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p2/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KTP P2"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      KK
+                      <?php if($hasil['file_kk'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_kk/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_kk/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      Akta Lahir Anak
+                      <?php if($hasil['file_akta_anak'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_al_anak/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_al_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      Akta Lahir Calon
+                      <?php if($hasil['file_akta_calon'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_al_calon/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_al_calon/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      Ijazah Anak
+                      <?php if($hasil['file_ijazah_anak'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                    </td>
+                    <td width="150px">
                       <a href="<?php echo base_url('pendaftaran/edit_pendaftaran_diska/' .$hasil['id_diska']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <button data-toggle="modal" data-target="#delete-data<?= $hasil['id_diska']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                     </td>
@@ -95,7 +146,7 @@
 
   </html>
   <!-- Modal Add-->
-  <div class="modal fade" id="add-diska" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="add-diska" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success">
@@ -321,19 +372,19 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
  
   <!-- Modal Hapus-->
   <?php foreach ($data as $hasil) : ?>
-    <!-- <div class="modal fade" id="delete-data<?= $hasil['id_persyaratan']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-data<?= $hasil['id_diska']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-danger">
-            <h5><i class="fas fa-trash"></i> Hapus Data Persyaratan Berperkara</h5>
+            <h5><i class="fas fa-trash"></i> Hapus Data Ini</h5>
           </div>
-          <form class="form-horizontal" action="<?php echo site_url('informasi/delete_data_persyaratan/' . $hasil['id_persyaratan']); ?>" method="post" enctype="multipart/form-data" role="form">
+          <form class="form-horizontal" action="<?php echo site_url('pendaftaran/delete_data_diska/' . $hasil['id_diska']); ?>" method="post" enctype="multipart/form-data" role="form">
             <div class="modal-body">
-              <p>Apakah Anda Ingin Menghapus Data <strong><?= $hasil['nama_perkara']; ?></strong> ?</p>
+              <p>Apakah Anda Ingin Menghapus Data <strong><?= $hasil['nama_p1']; ?></strong> ?</p>
             </div>
             <div class="modal-footer justify-content-between">
               <button class="btn btn-danger btn-lg" type="submit"><i class="fas fa-trash"></i></button>
@@ -342,6 +393,6 @@
           </form>
         </div>
       </div>
-    </div> -->
+    </div>
   <?php endforeach;  ?>
   <!-- Modal -->
