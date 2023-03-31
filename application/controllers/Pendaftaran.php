@@ -220,14 +220,15 @@ class Pendaftaran extends CI_Controller
 		$lama_mengenal_calon    = $kode_rtf['lama_mengenal_calon'];
 		$penghasilan_calon    	= $kode_rtf['penghasilan_calon'];
 		$tgl_lamaran    		= $kode_rtf['tgl_lamaran'];
+		$penghasilan_anak    	= $kode_rtf['penghasilan_anak'];
 
         
         if($jenis_permohonan == "Anak perempuan"){
 			$document = file_get_contents('./downloads/template_diska_p.rtf');
 		}else if($jenis_permohonan == "Anak laki-Laki"){
-			$document = file_get_contents('./downloads/template_diska_p.rtf');
+			$document = file_get_contents('./downloads/template_diska_l.rtf');
 		}else if($jenis_permohonan == "Anak perempuan dan laki-laki"){
-			$document = file_get_contents('./downloads/template_diska_p.rtf');
+			$document = file_get_contents('./downloads/template_diska_pl.rtf');
 		}
         
 
@@ -272,6 +273,7 @@ class Pendaftaran extends CI_Controller
 		$document = str_replace("#36#", $lama_mengenal_calon, $document);
 		$document = str_replace("#37#", $penghasilan_calon, $document);
 		$document = str_replace("#38#", $tgl_lamaran, $document);
+		$document = str_replace("#39#", $penghasilan_anak, $document);
 
         
         header("Content-type: application/rtf");
