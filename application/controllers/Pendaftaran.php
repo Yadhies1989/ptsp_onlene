@@ -10,10 +10,10 @@ class Pendaftaran extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
-	public function diska()
+	public function dispensasi_kawin()
 	{
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Pendaftaran Perkara Dispensasi Kawin';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['data'] = $this->db->get('tbl_daftar_diska')->result_array();
 
 		$this->load->view('Template/navbar', $data);
@@ -25,7 +25,7 @@ class Pendaftaran extends CI_Controller
 	public function add_pendaftaran_diska()
 	{
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Pendaftaran Perkara Dispensasi Kawin';
+		$data['title'] = 'Dispensasi Kawin';
 
 		$this->load->view('Template/navbar', $data);
 		$this->load->view('Template/sidebar', $data);
@@ -171,7 +171,7 @@ class Pendaftaran extends CI_Controller
 		$this->m_petugas->insert_data('tbl_daftar_diska', $data);
 
 		$this->session->set_flashdata('pesan', 'Di Tambahkan');
-		redirect('pendaftaran/diska');
+		redirect('pendaftaran/dispensasi_kawin');
 	}
 
 	public function print_rtf_diska(){
@@ -219,8 +219,10 @@ class Pendaftaran extends CI_Controller
 		$alamat_calon     		= $kode_rtf['alamat_calon'];
 		$lama_mengenal_calon    = $kode_rtf['lama_mengenal_calon'];
 		$penghasilan_calon    	= $kode_rtf['penghasilan_calon'];
+		$penghasilan_calon_terbilang    	= terbilang($kode_rtf['penghasilan_calon']);
 		$tgl_lamaran    		= $kode_rtf['tgl_lamaran'];
 		$penghasilan_anak    	= $kode_rtf['penghasilan_anak'];
+		$penghasilan_anak_terbilang    	= terbilang($kode_rtf['penghasilan_anak']);
 
         
         if($jenis_permohonan == "Anak perempuan"){
@@ -272,8 +274,11 @@ class Pendaftaran extends CI_Controller
 		$document = str_replace("#35#", $alamat_calon, $document);
 		$document = str_replace("#36#", $lama_mengenal_calon, $document);
 		$document = str_replace("#37#", $penghasilan_calon, $document);
-		$document = str_replace("#38#", $tgl_lamaran, $document);
-		$document = str_replace("#39#", $penghasilan_anak, $document);
+		$document = str_replace("#38#", $penghasilan_calon_terbilang, $document);
+		$document = str_replace("#39#", $tgl_lamaran, $document);
+		$document = str_replace("#40#", $penghasilan_anak, $document);
+		$document = str_replace("#41#", $penghasilan_anak_terbilang, $document);
+		
 
         
         header("Content-type: application/rtf");
@@ -284,7 +289,7 @@ class Pendaftaran extends CI_Controller
 
 	public function upload_ktp_p1($kode){
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Upload Foto KTP Pemohon 1';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
 		
 		$this->load->view('Template/navbar', $data);
@@ -319,18 +324,18 @@ class Pendaftaran extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_diska SET file_ktp_p1 = '$new_image' where id_diska = '$id_diska' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             } else {
 				
                 $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             }
         }
     }
 
 	public function upload_ktp_p2($kode){
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Upload Foto KTP Pemohon 2';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
 		
 		$this->load->view('Template/navbar', $data);
@@ -365,18 +370,18 @@ class Pendaftaran extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_diska SET file_ktp_p2 = '$new_image' where id_diska = '$id_diska' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             } else {
 				
                 $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             }
         }
     }
 
 	public function upload_kk($kode){
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Upload Foto Kartu Keluarga';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
 		
 		$this->load->view('Template/navbar', $data);
@@ -411,18 +416,18 @@ class Pendaftaran extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_diska SET file_kk = '$new_image' where id_diska = '$id_diska' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             } else {
 				
                 $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             }
         }
     }
 
 	public function upload_al_anak($kode){
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Upload Foto Akta Lahir Anak';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
 		
 		$this->load->view('Template/navbar', $data);
@@ -457,18 +462,18 @@ class Pendaftaran extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_diska SET file_akta_anak = '$new_image' where id_diska = '$id_diska' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             } else {
 				
                 $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             }
         }
     }
 
 	public function upload_al_calon($kode){
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Upload Foto Akta Lahir Calon';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
 		
 		$this->load->view('Template/navbar', $data);
@@ -503,18 +508,18 @@ class Pendaftaran extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_diska SET file_akta_calon = '$new_image' where id_diska = '$id_diska' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             } else {
 				
                 $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             }
         }
     }
 
 	public function upload_ijazah_anak($kode){
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['title'] = 'Upload Ijazah Anak';
+		$data['title'] = 'Dispensasi Kawin';
 		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
 		
 		$this->load->view('Template/navbar', $data);
@@ -549,11 +554,11 @@ class Pendaftaran extends CI_Controller
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_diska SET file_ijazah_anak = '$new_image' where id_diska = '$id_diska' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             } else {
 				
                 $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
-                redirect('pendaftaran/diska');
+                redirect('pendaftaran/dispensasi_kawin');
             }
         }
     }
@@ -565,7 +570,7 @@ class Pendaftaran extends CI_Controller
 
 		$this->m_petugas->hapus_data($where, 'tbl_daftar_diska');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
-		redirect('pendaftaran/diska');
+		redirect('pendaftaran/dispensasi_kawin');
 	}
 
 	

@@ -36,7 +36,7 @@
                 <h5 class="card-title m-0">--Form Upload File--</h5>
                 <div class="card-tools">
                     <button type="submit" class="btn btn-success btn-sm active" role="button" aria-pressed="true"><i class="fas fa-save"></i> Simpan</button>
-                    <a href="<?php echo base_url('pendaftaran/diska') ?>" class="btn btn-danger btn-sm active" role="button" aria-pressed="true"><i class="fas fa-backward"></i> Kembali</a>
+                    <a href="<?php echo base_url('pendaftaran/dispensasi_kawin') ?>" class="btn btn-danger btn-sm active" role="button" aria-pressed="true"><i class="fas fa-backward"></i> Kembali</a>
                 </div>
             </div>
             <div class="card-body">

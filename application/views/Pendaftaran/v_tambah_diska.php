@@ -509,7 +509,7 @@
                     </div>
                   <div class="footer justify-content-between">
                     <button class="btn btn-success btn-lg" type="submit"><i class="fas fa-save"></i></button>
-                    <a href="<?php echo base_url('pendaftaran/diska') ?>" class="btn btn-danger btn-lg"><i class="fas fa-window-close"></i></a>
+                    <a href="<?php echo base_url('pendaftaran/dispensasi_kawin') ?>" class="btn btn-danger btn-lg"><i class="fas fa-window-close"></i></a>
                   </div>
                 </form>
               
