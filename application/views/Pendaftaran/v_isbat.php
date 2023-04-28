@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url('admin') ?>">Home</a></li>
-              <li class="breadcrumb-item active">Dispensasi Kawin</li>
+              <li class="breadcrumb-item active">Sidang Isbat Nikah</li>
             </ol>
           </div>
         </div>
@@ -22,12 +22,12 @@
       <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan') ?>"> </div>
       <div class="nama-menu" data-namamenu="<?php echo $this->session->flashdata('nama_menu')  ?>"></div>
       <!-- Default box -->
-      <div class="card card-warning">
+      <div class="card card-info">
         <div class="card-header">
-          <h3 class="card-title">Pendaftaran Dispensasi Kawin</h3>
+          <h3 class="card-title">Pendaftaran Sidang Isbat Nikah</h3>
           <div class="card-tools">
             <!-- <button data-toggle="modal" data-target="#add-diska" class="btn btn-tool"><i class="fas fa-plus"></i></button> -->
-            <a href="<?php echo base_url('pendaftaran/add_pendaftaran_diska/') ?>" class="btn btn-tool">Daftar <i class="fas fa-plus-circle"></i></a>
+            <a href="<?php echo base_url('pendaftaran/add_pendaftaran_isbat/') ?>" class="btn btn-tool btn-sm"><i class="fas fa-plus"></i></a>
           </div>
         </div>
         <div class="card-body">
@@ -38,13 +38,9 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Wilayah KUA</th>
-                  <th scope="col">Anak yang kurang umur</th>
                   <th scope="col">Tanggal Daftar</th>
                   <th scope="col">Nama Pemohon 1</th>
                   <th scope="col">Nama Pemohon 2</th>
-                  <th scope="col">Nama Anak</th>
-                  <th scope="col">Nama Calon</th>
                   <th scope="col">Download Permohonan</th>
                   <th scope="col">Kelengkapan Dokumen</th>
                   <th scope="col">Aksi</th>
@@ -57,15 +53,11 @@
                 foreach ($data as $hasil) : ?>
                   <tr>
                     <td><?php echo $no++  ?></td>
-                    <td><?php echo $hasil['kode_kua'] ?></td>
-                    <td><?php echo $hasil['jenis_permohonan'] ?></td>
                     <td><?php echo tanggal_indonesia_lengkap($hasil['tgl_daftar']); ?></td>
                     <td><?php echo $hasil['nama_p1'] ?></td>
-                    <td><?php echo $hasil['nama_p2'] ?></td>
-                    <td><?php echo $hasil['nama_anak'] ?></td>
-                    <td><?php echo $hasil['nama_calon'] ?></td>
+                    <td><?php echo $hasil['nama_p2'] ?></td>                    
                     <td width="150px">
-                        <a href="<?php echo base_url('pendaftaran/print_rtf_diska/' . $hasil['id_diska']) ?>" class="btn btn-primary btn-sm" title="Print Permohonan"><i class="fas fa-print"></i></a>
+                        <a href="<?php echo base_url('pendaftaran/print_rtf_isbat/' . $hasil['id_isbat']) ?>" class="btn btn-primary btn-sm" title="Print Permohonan"><i class="fas fa-print"></i></a>
                     </td>
                     <td width="150px">
                       <div class="progress">
@@ -73,55 +65,55 @@
                         <?php if($hasil['file_ktp_p1'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
                         <?php if($hasil['file_ktp_p2'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
                         <?php if($hasil['file_kk'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
-                        <?php if($hasil['file_akta_anak'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
-                        <?php if($hasil['file_akta_calon'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
-                        <?php if($hasil['file_ijazah_anak'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_ktp_semua_anak'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_ket_kua'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
+                        <?php if($hasil['file_surat_mati'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
                       </div>
                       KTP P1
                       <?php if($hasil['file_ktp_p1'] == NULL) { ?>
-                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p1/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p1_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
-                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p1/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p1_isbat/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                       <br>
                       KTP P2
                       <?php if($hasil['file_ktp_p2'] == NULL) { ?>
-                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p2/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P2"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p2_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P2"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
-                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p2/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KTP P2"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_p2_isbat/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KTP P2"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                       <br>
                       KK
                       <?php if($hasil['file_kk'] == NULL) { ?>
-                      <a href="<?php echo base_url('pendaftaran/upload_kk/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_kk_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
-                      <a href="<?php echo base_url('pendaftaran/upload_kk/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_kk_isbat/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                       <br>
-                      Akta Lahir Anak
-                      <?php if($hasil['file_akta_anak'] == NULL) { ?>
-                      <a href="<?php echo base_url('pendaftaran/upload_al_anak/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      KTP Semua Anak
+                      <?php if($hasil['file_ktp_semua_anak'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_semua_anak/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
-                      <a href="<?php echo base_url('pendaftaran/upload_al_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_ktp_semua_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                       <br>
-                      Akta Lahir Calon
-                      <?php if($hasil['file_akta_calon'] == NULL) { ?>
-                      <a href="<?php echo base_url('pendaftaran/upload_al_calon/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                     Ket KUA
+                      <?php if($hasil['file_ket_kua'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_ket_kua/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
-                      <a href="<?php echo base_url('pendaftaran/upload_al_calon/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_ket_kua/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                       <br>
-                      Ijazah Anak
-                      <?php if($hasil['file_ijazah_anak'] == NULL) { ?>
-                      <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      Surat Kematian (*)
+                      <?php if($hasil['file_surat_mati'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_surat_mati/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
-                      <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <a href="<?php echo base_url('pendaftaran/upload_surat_mati/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                     </td>
                     <td width="150px">
-                      <a href="<?php echo base_url('pendaftaran/edit_diska/' .$hasil['kode']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                      <button data-toggle="modal" data-target="#delete-data<?= $hasil['id_diska']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                      <a href="<?php echo base_url('pendaftaran/edit_isbat/' .$hasil['kode']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                      <button data-toggle="modal" data-target="#delete-data<?= $hasil['id_isbat']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                     </td>
 
                   </tr>
@@ -145,16 +137,17 @@
   </body>
 
   </html>
-   
+  
+ 
   <!-- Modal Hapus-->
   <?php foreach ($data as $hasil) : ?>
-    <div class="modal fade" id="delete-data<?= $hasil['id_diska']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-data<?= $hasil['id_isbat']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-danger">
             <h5><i class="fas fa-trash"></i> Hapus Data Ini</h5>
           </div>
-          <form class="form-horizontal" action="<?php echo site_url('pendaftaran/delete_data_diska/' . $hasil['id_diska']); ?>" method="post" enctype="multipart/form-data" role="form">
+          <form class="form-horizontal" action="<?php echo site_url('pendaftaran/delete_data_isbat/' . $hasil['id_isbat']); ?>" method="post" enctype="multipart/form-data" role="form">
             <div class="modal-body">
               <p>Apakah Anda Ingin Menghapus Data <strong><?= $hasil['nama_p1']; ?></strong> ?</p>
             </div>
