@@ -13,9 +13,13 @@ class Pendaftaran extends CI_Controller
 	public function dispensasi_kawin()
 	{
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$kua_login = $data['user']['name'];
 		$data['title'] = 'Dispensasi Kawin';
-		$data['data'] = $this->db->get_where('tbl_daftar_diska', ['kode_kua' => $kua_login])->result_array();
+		if($data['user']['role_id'] == 1){
+			$data['data'] = $this->db->get('tbl_daftar_diska')->result_array();
+		}else{
+			$kua_login = $data['user']['name'];
+			$data['data'] = $this->db->get_where('tbl_daftar_diska', ['kode_kua' => $kua_login])->result_array();
+		}
 
 		$this->load->view('Template/navbar', $data);
 		$this->load->view('Template/sidebar', $data);
@@ -671,9 +675,14 @@ class Pendaftaran extends CI_Controller
 	public function sidang_isbat()
 	{
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$kua_login = $data['user']['name'];
 		$data['title'] = 'Sidang Isbat';
-		$data['data'] = $this->db->get_where('tbl_daftar_isbat', ['kode_kua' => $kua_login])->result_array();
+		
+		if($data['user']['role_id'] == 1){
+			$data['data'] = $this->db->get('tbl_daftar_isbat')->result_array();
+		}else{
+			$kua_login = $data['user']['name'];
+			$data['data'] = $this->db->get_where('tbl_daftar_isbat', ['kode_kua' => $kua_login])->result_array();
+		}
 
 		$this->load->view('Template/navbar', $data);
 		$this->load->view('Template/sidebar', $data);

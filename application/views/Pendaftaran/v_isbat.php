@@ -26,8 +26,7 @@
         <div class="card-header">
           <h3 class="card-title">Pendaftaran Sidang Isbat Nikah</h3>
           <div class="card-tools">
-            <!-- <button data-toggle="modal" data-target="#add-diska" class="btn btn-tool"><i class="fas fa-plus"></i></button> -->
-            <a href="<?php echo base_url('pendaftaran/add_pendaftaran_isbat/') ?>" class="btn btn-tool btn-sm"><i class="fas fa-plus"></i></a>
+            <a href="<?php echo base_url('pendaftaran/add_pendaftaran_isbat/') ?>" class="btn btn-tool">Daftar <i class="fas fa-plus-circle"></i></a>
           </div>
         </div>
         <div class="card-body">

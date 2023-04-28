@@ -26,7 +26,6 @@
         <div class="card-header">
           <h3 class="card-title">Pendaftaran Dispensasi Kawin</h3>
           <div class="card-tools">
-            <!-- <button data-toggle="modal" data-target="#add-diska" class="btn btn-tool"><i class="fas fa-plus"></i></button> -->
             <a href="<?php echo base_url('pendaftaran/add_pendaftaran_diska/') ?>" class="btn btn-tool">Daftar <i class="fas fa-plus-circle"></i></a>
           </div>
         </div>
