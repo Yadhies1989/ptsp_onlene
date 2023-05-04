@@ -46,6 +46,7 @@
                   <th scope="col">Nama Calon</th>
                   <th scope="col">Download Permohonan</th>
                   <th scope="col">Kelengkapan Dokumen</th>
+                  <th scope="col">Catatan PA Bojonegoro</th>
                   <th scope="col">Aksi</th>
 
                 </tr>
@@ -118,7 +119,11 @@
                       <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                     </td>
+                    <td><i style="color:red;"><?php echo $hasil['catatan_pa'] ?></i style="color:red;"></td>
                     <td width="150px">
+                      <?php if($user{'role_id'} == 1){?>
+                        <button data-toggle="modal" data-target="#catatan<?= $hasil['id_diska']; ?>" class="btn btn-secondary btn-sm"><i class="fas fa-list"></i></button>
+                      <?php }?>
                       <a href="<?php echo base_url('pendaftaran/edit_diska/' .$hasil['kode']) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                       <button data-toggle="modal" data-target="#delete-data<?= $hasil['id_diska']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                     </td>
@@ -144,6 +149,35 @@
   </body>
 
   </html>
+  <!-- Modal Catatan-->
+  <?php foreach ($data as $hasil) : ?>
+    <div class="modal fade" id="catatan<?= $hasil['id_diska']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h5><i class="fas fa-trash"></i> Tambahkan Catatan</h5>
+          </div>
+          <form class="form-horizontal" action="<?php echo site_url('pendaftaran/catatan_diska/' . $hasil['id_diska']); ?>" method="post" enctype="multipart/form-data" role="form">
+            <div class="modal-body">
+              <div class="form-group row">
+                <div class="row col-12">
+                  <label for="catatan_pa" class="col-sm-12 col-form-label col-form-label-sm">Catatan PA</label>
+                  <div class="col-sm-12">
+                    <textarea class="form-control form-control-sm" name="catatan_pa" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button class="btn btn-success btn-lg" type="submit"><i class="fas fa-save"></i></button>
+              <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <?php endforeach;  ?>
+  <!-- Modal -->
    
   <!-- Modal Hapus-->
   <?php foreach ($data as $hasil) : ?>

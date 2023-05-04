@@ -27,6 +27,18 @@ class Pendaftaran extends CI_Controller
 		$this->load->view('Template/footer');
 	}
 
+	public function catatan_diska($id)
+	{
+		$data = array(
+			'catatan_pa'  		=> $this->input->post('catatan_pa', true),
+		);
+
+		$this->db->update('tbl_daftar_diska', $data, array('id_diska' => $id));
+
+		$this->session->set_flashdata('pesan', 'Di Tambahkan Catatan !!!');
+		redirect('pendaftaran/dispensasi_kawin');
+	}
+
 	public function add_pendaftaran_diska()
 	{
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
@@ -171,6 +183,7 @@ class Pendaftaran extends CI_Controller
 			'tgl_daftar'        => date('Y-m-d'),
 			'kode'              => $this->autogenerate(),
 			'progress'			=> 40,
+			'catatan_pa'  		=> "mohon ditunggu",
 		);
 		
 		$this->m_petugas->insert_data('tbl_daftar_diska', $data);
@@ -690,6 +703,18 @@ class Pendaftaran extends CI_Controller
 		$this->load->view('Template/footer');
 	}
 
+	public function catatan_isbat($id)
+	{
+		$data = array(
+			'catatan_pa'  		=> $this->input->post('catatan_pa', true),
+		);
+
+		$this->db->update('tbl_daftar_isbat', $data, array('id_isbat' => $id));
+
+		$this->session->set_flashdata('pesan', 'Di Tambahkan Catatan !!!');
+		redirect('pendaftaran/sidang_isbat');
+	}
+
 	public function add_pendaftaran_isbat()
 	{
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
@@ -802,6 +827,7 @@ class Pendaftaran extends CI_Controller
 			'tempat_lahir_saksi2'     	=> $this->input->post('tempat_lahir_saksi2', true),
 			'tgl_lahir_saksi1'     	=> $this->input->post('tgl_lahir_saksi1', true),
 			'tgl_lahir_saksi2'     	=> $this->input->post('tgl_lahir_saksi2', true),
+			'catatan_pa'  		=> "mohon ditunggu",
 
 		);
 		
