@@ -44,7 +44,7 @@ class Menu extends CI_Controller {
 				'icon'		        => $icon
 			);
 
-			$this->m_menu->insert_data('user_menu', $data);
+			$this->M_menu->insert_data('user_menu', $data);
 
 			$this->session->set_flashdata('pesan', 'Di Tambahkan');
 			redirect('menu');
@@ -81,7 +81,7 @@ class Menu extends CI_Controller {
 	public function hapus_data($id)
 	{
 		$where = array('id' => $id);
-		$this->m_menu->hapus_data($where, 'user_menu');
+		$this->M_menu->hapus_data($where, 'user_menu');
 		$this->session->set_flashdata('pesan', 'DiHapus !!!');
 		redirect('menu');
 
@@ -91,7 +91,7 @@ class Menu extends CI_Controller {
 	{
 		$data['title'] = 'Submenu Management' ;
 		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['submenu'] = $this->m_menu->getSubMenu();
+		$data['submenu'] = $this->M_menu->getSubMenu();
 		$data['menu'] = $this->db->get('user_menu')->result_array();
 
 
@@ -133,7 +133,7 @@ class Menu extends CI_Controller {
 				'is_active'		=> $is_active
 			);
 
-			$this->m_menu->insert_data('user_sub_menu', $data);
+			$this->M_menu->insert_data('user_sub_menu', $data);
 
 			$this->session->set_flashdata('pesan', 'Di Tambahkan');
 			redirect('menu/submenu');
@@ -179,7 +179,7 @@ class Menu extends CI_Controller {
 	public function hapus_submenu($id)
 	{
 		$where = array('id' => $id);
-		$this->m_menu->hapus_dataSubmenu($where, 'user_sub_menu');
+		$this->M_menu->hapus_dataSubmenu($where, 'user_sub_menu');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('menu/submenu');
 

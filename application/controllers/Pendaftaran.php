@@ -186,7 +186,7 @@ class Pendaftaran extends CI_Controller
 			'catatan_pa'  		=> "mohon ditunggu",
 		);
 		
-		$this->m_petugas->insert_data('tbl_daftar_diska', $data);
+		$this->M_petugas->insert_data('tbl_daftar_diska', $data);
 
 		$this->session->set_flashdata('pesan', 'Di Tambahkan');
 		redirect('pendaftaran/dispensasi_kawin');
@@ -680,7 +680,7 @@ class Pendaftaran extends CI_Controller
 		$where = array('id_diska' => $id);
 		$row = $this->db->where('id_diska', $id)->get('tbl_daftar_diska')->row_array();
 
-		$this->m_petugas->hapus_data($where, 'tbl_daftar_diska');
+		$this->M_petugas->hapus_data($where, 'tbl_daftar_diska');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('pendaftaran/dispensasi_kawin');
 	}
@@ -831,7 +831,7 @@ class Pendaftaran extends CI_Controller
 
 		);
 		
-		$this->m_petugas->insert_data('tbl_daftar_isbat', $data);
+		$this->M_petugas->insert_data('tbl_daftar_isbat', $data);
 
 		$this->session->set_flashdata('pesan', 'Di Tambahkan');
 		redirect('pendaftaran/sidang_isbat');
@@ -1297,7 +1297,7 @@ class Pendaftaran extends CI_Controller
 		$where = array('id_isbat' => $id);
 		$row = $this->db->where('id_isbat', $id)->get('tbl_daftar_isbat')->row_array();
 
-		$this->m_petugas->hapus_data($where, 'tbl_daftar_isbat');
+		$this->M_petugas->hapus_data($where, 'tbl_daftar_isbat');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('pendaftaran/sidang_isbat');
 	}

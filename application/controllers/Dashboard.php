@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller
                     'image'             => $upload_name
                 );
 
-                $this->m_petugas->insert_data('tbl_inovasi', $data);
+                $this->M_petugas->insert_data('tbl_inovasi', $data);
 
                 $this->session->set_flashdata('pesan', 'Di Tambahkan');
                 redirect('dashboard/inovasi');
@@ -106,7 +106,7 @@ class Dashboard extends CI_Controller
         $row = $this->db->where('id_inovasi', $id)->get('tbl_inovasi')->row_array();
         unlink('assets/img/inovasi/' . $row['image']);
 
-        $this->m_petugas->hapus_data($where, 'tbl_inovasi');
+        $this->M_petugas->hapus_data($where, 'tbl_inovasi');
         $this->session->set_flashdata('pesan', 'Di Hapus !!!');
         redirect('dashboard/inovasi');
     }

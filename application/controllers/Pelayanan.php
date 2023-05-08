@@ -16,9 +16,9 @@ class Pelayanan extends CI_Controller
         $data['informasi']   = 'informasi';
         $data['data_persyaratan_berperkara'] = $this->db->get('tbl_persyaratan_berperkara')->result_array();
 
-        $this->load->view('frontend/header', $data);
-        $this->load->view('frontend/informasi', $data);
-        $this->load->view('frontend/footer');
+        $this->load->view('Frontend/header', $data);
+        $this->load->view('Frontend/informasi', $data);
+        $this->load->view('Frontend/footer');
     }
 
     public function prosedur()
@@ -26,9 +26,9 @@ class Pelayanan extends CI_Controller
         $data['title']   = 'PTSP PA Bojonegoro';
         $data['informasi']   = 'prosedur';
 
-        $this->load->view('frontend/header', $data);
-        $this->load->view('frontend/informasi', $data);
-        $this->load->view('frontend/footer');
+        $this->load->view('Frontend/header', $data);
+        $this->load->view('Frontend/informasi', $data);
+        $this->load->view('Frontend/footer');
     }
 
     public function jadwalsidang()
@@ -36,9 +36,9 @@ class Pelayanan extends CI_Controller
         $data['title']   = 'PTSP PA Bojonegoro';
         $data['informasi']   = 'jadwalsidang';
 
-        $this->load->view('frontend/header', $data);
-        $this->load->view('frontend/informasi', $data);
-        $this->load->view('frontend/footer');
+        $this->load->view('Frontend/header', $data);
+        $this->load->view('Frontend/informasi', $data);
+        $this->load->view('Frontend/footer');
     }
 
     public function gugatanmandiri()
@@ -46,9 +46,9 @@ class Pelayanan extends CI_Controller
         $data['title']   = 'PTSP PA Bojonegoro';
         $data['pendaftaran']   = 'gugatanmandiri';
 
-        $this->load->view('frontend/header', $data);
-        $this->load->view('frontend/pendaftaran', $data);
-        $this->load->view('frontend/footer');
+        $this->load->view('Frontend/header', $data);
+        $this->load->view('Frontend/pendaftaran', $data);
+        $this->load->view('Frontend/footer');
     }
 
     public function validasi()
@@ -56,8 +56,8 @@ class Pelayanan extends CI_Controller
         $data['title']   = 'PTSP PA Bojonegoro';
         $data['produk']   = 'validasi';
 
-        $this->load->view('frontend/header', $data);
-        $this->load->view('frontend/produk', $data);
-        $this->load->view('frontend/footer');
+        $this->load->view('Frontend/header', $data);
+        $this->load->view('Frontend/produk', $data);
+        $this->load->view('Frontend/footer');
     }
 }

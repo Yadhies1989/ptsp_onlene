@@ -33,7 +33,7 @@ class Petugas extends CI_Controller
 			'updated_at'        => date('Y-m-d')
 		);
 
-		$this->m_petugas->insert_data('tbl_petugas', $data);
+		$this->M_petugas->insert_data('tbl_petugas', $data);
 
 		$this->session->set_flashdata('pesan', 'Di Tambahkan');
 		redirect('petugas');
@@ -64,7 +64,7 @@ class Petugas extends CI_Controller
 					'image'             => $upload_name
 				);
 
-				$this->m_petugas->insert_data('tbl_petugas', $data);
+				$this->M_petugas->insert_data('tbl_petugas', $data);
 
 				$this->session->set_flashdata('pesan', 'Di Tambahkan');
 				redirect('petugas');
@@ -163,7 +163,7 @@ class Petugas extends CI_Controller
 	public function delete($id)
 	{
 		$where = array('id_petugas' => $id);
-		$this->m_petugas->hapus_data($where, 'tbl_petugas');
+		$this->M->hapus_data($where, 'tbl_petugas');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('petugas');
 	}
@@ -174,7 +174,7 @@ class Petugas extends CI_Controller
 		$row = $this->db->where('id_petugas', $id)->get('tbl_petugas')->row_array();
 		unlink('assets/img/profile/' . $row['image']);
 
-		$this->m_petugas->hapus_data($where, 'tbl_petugas');
+		$this->M_petugas->hapus_data($where, 'tbl_petugas');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('petugas');
 	}

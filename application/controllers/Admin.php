@@ -90,7 +90,7 @@ class Admin extends CI_Controller {
 				
 			);
 
-			$this->m_admin->insert_data('user_role', $data);
+			$this->M_admin->insert_data('user_role', $data);
 
 			$this->session->set_flashdata('pesan', 'Di Tambahkan');
 			redirect('admin/role');
@@ -127,7 +127,7 @@ class Admin extends CI_Controller {
 	public function hapus_role($id)
 	{
 		$where = array('id_role' => $id);
-		$this->m_admin->hapus_data($where, 'user_role');
+		$this->M_admin->hapus_data($where, 'user_role');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('admin/role');
 

@@ -30,7 +30,7 @@ class Informasi extends CI_Controller
 			'syarat_perkara'     		=> $this->input->post('about', true),
 		);
 		
-		$this->m_petugas->insert_data('tbl_persyaratan_berperkara', $data);
+		$this->M_petugas->insert_data('tbl_persyaratan_berperkara', $data);
 
 		$this->session->set_flashdata('pesan', 'Di Tambahkan');
 		redirect('informasi/persyaratan_berperkara');
@@ -66,7 +66,7 @@ class Informasi extends CI_Controller
 		$where = array('id_persyaratan' => $id);
 		$row = $this->db->where('id_persyaratan', $id)->get('tbl_persyaratan_berperkara')->row_array();
 
-		$this->m_petugas->hapus_data($where, 'tbl_persyaratan_berperkara');
+		$this->M_petugas->hapus_data($where, 'tbl_persyaratan_berperkara');
 		$this->session->set_flashdata('pesan', 'Di Hapus !!!');
 		redirect('informasi/persyaratan_berperkara');
 	}
