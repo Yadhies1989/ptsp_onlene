@@ -118,6 +118,13 @@
                       <?php }else{?>
                       <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
+                      <br>
+                      Permohonan
+                      <?php if($hasil['file_permohonan'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_permohonan/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_permohonan/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
                     </td>
                     <td><i style="color:red;"><?php echo $hasil['catatan_pa'] ?></i style="color:red;"></td>
                     <td width="150px">

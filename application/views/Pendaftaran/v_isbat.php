@@ -110,6 +110,13 @@
                       <?php }else{?>
                       <a href="<?php echo base_url('pendaftaran/upload_surat_mati/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
+                      <br>
+                      Permohonan
+                      <?php if($hasil['file_permohonan_isbat'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_permohonan_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_permohonan_isbat/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
                     </td>
                     <td><i style="color:red;"><?php echo $hasil['catatan_pa'] ?></i style="color:red;"></td>
                     <td width="150px">
