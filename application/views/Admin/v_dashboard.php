@@ -37,17 +37,17 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Role ID</b> <a class="float-right"><?php echo $user['role_id']; ?></a>
+                    <b>Role ID</b> <a class="float-right"><?php if($user['role_id'] == 2){echo "Operator KUA";}else{echo "";}?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>Is Active</b> <a class="float-right"><?php echo $user['is_active']; ?></a>
+                    <b>Is Active</b> <a class="float-right"><?php if($user['is_active'] == 1){echo "Akun Aktif";}else{echo "Akun Tidak Aktif";} ?></a>
                   </li>
-                  <li class="list-group-item">
-                    <b>Member Sejak</b> <a class="float-right"><?php echo $user['date_created']; ?></a>
-                  </li>
+                  <!-- <li class="list-group-item">
+                    <b>Aktif Sejak</b> <a class="float-right"><?php echo tanggal_indonesia($user['date_created']); ?></a>
+                  </li> -->
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
               </div>
               <!-- /.card-body -->
             </div>

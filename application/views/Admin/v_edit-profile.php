@@ -34,7 +34,7 @@
                 <div class="form-group row">
                   <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" value="<?php echo $user['name'];  ?>">
+                    <input type="text" class="form-control" name="name" value="<?php echo $user['name'];  ?>" readonly>
                     <?= form_error('name', '<div class="text-danger mb-3">', '</div>')?>
                   </div>
                 </div>
