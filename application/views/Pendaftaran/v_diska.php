@@ -30,6 +30,20 @@
           </div>
         </div>
         <div class="card-body">
+          <blockquote class="quote-orange">
+            <h6>Perhatian!</h6>
+            <span><i>Siapkan file scan dokumen-dokumen dibawah ini dalam format <b>.pdf/.jpg/.jpeg/.JPG/.JPEG atau .png</b> dengan maksimum size <b>2 MB</b></i></span><br/>
+            <span>File Scan KTP Pemohon 1</span><br/>
+            <span>File Scan KTP Pemohon 2</span><br/>
+            <span>File Scan Kartu Keluarga</span><br/>
+            <span>File Scan Akta Lahir Anak</span><br/>
+            <span>File Scan Akta Lahir Calon</span><br/>
+            <span>File Scan Ijazah Terakhir Anak</span><br/>
+            <span>File Scan Permohonan Yang Telah Bertanda Tangan*</span><br/>
+            <span>File Scan Bukti Bayar (nomor rekening BSI<i style="color:green"> 7011218061 </i>a.n. RPL 073 PA Bojonegoro)</span>
+          </blockquote>
+        </div>
+        <div class="card-body">
           <!-- batas atas -->
 
           <div class="table-responsive">
