@@ -60,7 +60,7 @@
                         <a href="<?php echo base_url('pendaftaran/print_rtf_isbat/' . $hasil['id_isbat']) ?>" class="btn btn-primary btn-sm" title="Print Permohonan"><i class="fas fa-print"></i></a>
                     </td>
                     <td width="150px">
-                      <div class="progress">
+                      <!-- <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                         <?php if($hasil['file_ktp_p1'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
                         <?php if($hasil['file_ktp_p2'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
@@ -68,7 +68,7 @@
                         <?php if($hasil['file_ktp_semua_anak'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
                         <?php if($hasil['file_ket_kua'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
                         <?php if($hasil['file_surat_mati'] != NULL) { ?> <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
-                      </div>
+                      </div> -->
                       KTP P1
                       <?php if($hasil['file_ktp_p1'] == NULL) { ?>
                       <a href="<?php echo base_url('pendaftaran/upload_ktp_p1_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KTP P1"><i class="fas fa-upload"></i></a>
@@ -116,6 +116,13 @@
                       <a href="<?php echo base_url('pendaftaran/upload_permohonan_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
                       <a href="<?php echo base_url('pendaftaran/upload_permohonan_isbat/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      Bukti Bayar
+                      <?php if($hasil['file_bukti_bayar_isbat'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_bukti_bayar_isbat/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_bukti_bayar_isbat/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                     </td>
                     <td><i style="color:red;"><?php echo $hasil['catatan_pa'] ?></i style="color:red;"></td>

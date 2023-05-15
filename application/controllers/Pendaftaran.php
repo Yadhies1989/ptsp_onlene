@@ -183,7 +183,7 @@ class Pendaftaran extends CI_Controller
 			'tgl_daftar'        => date('Y-m-d'),
 			'kode'              => $this->autogenerate(),
 			'progress'			=> 40,
-			'catatan_pa'  		=> "mohon ditunggu",
+			'catatan_pa'  		=> "proses melengkapi",
 		);
 		
 		$this->M_petugas->insert_data('tbl_daftar_diska', $data);
@@ -827,7 +827,7 @@ class Pendaftaran extends CI_Controller
 			'tempat_lahir_saksi2'     	=> $this->input->post('tempat_lahir_saksi2', true),
 			'tgl_lahir_saksi1'     	=> $this->input->post('tgl_lahir_saksi1', true),
 			'tgl_lahir_saksi2'     	=> $this->input->post('tgl_lahir_saksi2', true),
-			'catatan_pa'  		=> "mohon ditunggu",
+			'catatan_pa'  		=> "proses melengkapi",
 
 		);
 		
@@ -1384,6 +1384,98 @@ class Pendaftaran extends CI_Controller
 
                 $new_image = $this->upload->data('file_name');
                 $this->db->query("UPDATE tbl_daftar_isbat SET file_permohonan_isbat = '$new_image' where id_isbat = '$id_isbat' ");
+                $this->session->set_flashdata('pesan', 'Di Upload');
+                redirect('pendaftaran/sidang_isbat');
+            } else {
+				
+                $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
+                redirect('pendaftaran/sidang_isbat');
+            }
+        }
+    }
+
+	public function upload_bukti_bayar_diska($kode){
+		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['title'] = 'Dispensasi Kawin';
+		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
+		
+		$this->load->view('Template/navbar', $data);
+		$this->load->view('Template/sidebar', $data);
+		$this->load->view('Pendaftaran/v_upload_bukti_bayar_diska', $data);
+		$this->load->view('Template/footer');
+	}
+
+	public function proses_upload_bukti_bayar_diska()
+    {
+        $id_diska      = $this->input->post('id_diska');
+		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['id_diska' => $id_diska])->row_array();
+
+		$upload_image = $_FILES['image']['name'];
+
+        if ($upload_image) {
+            $config['allowed_types']    = 'pdf|jpg|jpeg|JPG|JPEG|png';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './uploads';
+            $filename                   = str_replace('/', '_', $id_diska . '_bukti_bayar_diska');
+            $config['file_name']        = $filename;
+
+            $this->load->library('upload', $config);
+			
+            if ($this->upload->do_upload('image')) {
+				
+                $old_image = $data['user']['file_upload'];
+                if ($old_image != 'default.jpg') {
+                    unlink(FCPATH . "uploads/" . $old_image);
+                }
+
+                $new_image = $this->upload->data('file_name');
+                $this->db->query("UPDATE tbl_daftar_diska SET file_bukti_bayar_diska = '$new_image' where id_diska = '$id_diska' ");
+                $this->session->set_flashdata('pesan', 'Di Upload');
+                redirect('pendaftaran/dispensasi_kawin');
+            } else {
+				
+                $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
+                redirect('pendaftaran/dispensasi_kawin');
+            }
+        }
+    }
+
+	public function upload_bukti_bayar_isbat($kode){
+		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['title'] = 'Sidang Isbat';
+		$data['isbat'] = $this->db->get_where('tbl_daftar_isbat', ['kode' => $kode])->row_array();
+		
+		$this->load->view('Template/navbar', $data);
+		$this->load->view('Template/sidebar', $data);
+		$this->load->view('Pendaftaran/v_upload_bukti_bayar_isbat', $data);
+		$this->load->view('Template/footer');
+	}
+
+	public function proses_upload_bukti_bayar_isbat()
+    {
+        $id_isbat      = $this->input->post('id_isbat');
+		$data['isbat'] = $this->db->get_where('tbl_daftar_isbat', ['id_isbat' => $id_isbat])->row_array();
+
+		$upload_image = $_FILES['image']['name'];
+
+        if ($upload_image) {
+            $config['allowed_types']    = 'pdf|jpg|jpeg|JPG|JPEG|png';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './uploads';
+            $filename                   = str_replace('/', '_', $id_isbat . '_bukti_bayar_isbat');
+            $config['file_name']        = $filename;
+
+            $this->load->library('upload', $config);
+			
+            if ($this->upload->do_upload('image')) {
+				
+                $old_image = $data['user']['file_upload'];
+                if ($old_image != 'default.jpg') {
+                    unlink(FCPATH . "uploads/" . $old_image);
+                }
+
+                $new_image = $this->upload->data('file_name');
+                $this->db->query("UPDATE tbl_daftar_isbat SET file_bukti_bayar_isbat = '$new_image' where id_isbat = '$id_isbat' ");
                 $this->session->set_flashdata('pesan', 'Di Upload');
                 redirect('pendaftaran/sidang_isbat');
             } else {

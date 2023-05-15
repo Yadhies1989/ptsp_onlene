@@ -24,14 +24,14 @@
       <!-- Default box -->
       <div class="card card-info">
         <div class="card-header">
-          <h3 class="card-title">Permohonan</h3>
+          <h3 class="card-title">Bukti Bayar Isbat</h3>
           <div class="card-tools">
             <button data-toggle="modal" data-target="#add-diska" class="btn btn-tool"><i class="fas fa-plus"></i></button>
           </div>
         </div>
         <div class="card-body">
           <!-- batas atas -->
-          <form id="form-file" method="POST" action="<?php echo base_url('pendaftaran/proses_upload_permohonan_isbat/') ?>" enctype="multipart/form-data">
+          <form id="form-file" method="POST" action="<?php echo base_url('pendaftaran/proses_upload_bukti_bayar_isbat/') ?>" enctype="multipart/form-data">
             <div class="card-header">
                 <h5 class="card-title m-0">--Form Upload File--</h5>
                 <div class="card-tools">
@@ -46,11 +46,11 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if ($isbat['file_permohonan_isbat'] === NULL) : ?>
-                                          <label for="image"><span style="color:red;">Surat Permohonan Yang Telah Ditandatangani Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
+                                        <?php if ($isbat['file_bukti_bayar_isbat'] === NULL) : ?>
+                                          <label for="image"><span style="color:red;">Bukti Bayar Isbat Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
                                         <?php else : ?>
                                             <strong> File : </strong>
-                                            <a href="<?php echo base_url() . 'uploads/' . $isbat['file_permohonan_isbat']; ?>" target="_blank">
+                                            <a href="<?php echo base_url() . 'uploads/' . $isbat['file_bukti_bayar_isbat']; ?>" target="_blank">
                                                 Lihat File
                                             </a>
                                         <?php endif; ?>
