@@ -1486,5 +1486,51 @@ class Pendaftaran extends CI_Controller
         }
     }
 
+	public function upload_penolakan($kode){
+		$data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['title'] = 'Dispensasi Kawin';
+		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['kode' => $kode])->row_array();
+		
+		$this->load->view('Template/navbar', $data);
+		$this->load->view('Template/sidebar', $data);
+		$this->load->view('Pendaftaran/v_upload_penolakan', $data);
+		$this->load->view('Template/footer');
+	}
+
+	public function proses_upload_penolakan()
+    {
+        $id_diska      = $this->input->post('id_diska');
+		$data['diska'] = $this->db->get_where('tbl_daftar_diska', ['id_diska' => $id_diska])->row_array();
+
+		$upload_image = $_FILES['image']['name'];
+
+        if ($upload_image) {
+            $config['allowed_types']    = 'pdf|jpg|jpeg|JPG|JPEG|png';
+            $config['max_size']         = '2048';
+            $config['upload_path']      = './uploads';
+            $filename                   = str_replace('/', '_', $id_diska . '_penolakan');
+            $config['file_name']        = $filename;
+
+            $this->load->library('upload', $config);
+			
+            if ($this->upload->do_upload('image')) {
+				
+                $old_image = $data['user']['file_upload'];
+                if ($old_image != 'default.jpg') {
+                    unlink(FCPATH . "uploads/" . $old_image);
+                }
+
+                $new_image = $this->upload->data('file_name');
+                $this->db->query("UPDATE tbl_daftar_diska SET file_penolakan = '$new_image' where id_diska = '$id_diska' ");
+                $this->session->set_flashdata('pesan', 'Di Upload');
+                redirect('pendaftaran/dispensasi_kawin');
+            } else {
+				
+                $this->session->set_flashdata('nama_menu', 'Tipe File Tidak Didukung Atau File Terlalu Besar !!!');
+                redirect('pendaftaran/dispensasi_kawin');
+            }
+        }
+    }
+
 	
 }

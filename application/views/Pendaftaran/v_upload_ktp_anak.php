@@ -43,7 +43,7 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if ($isbat['file_ktp_semua_anak'] === NULL) : ?>
+                                        <?php if ($isbat['file_ktp_semua_anak'] == NULL) : ?>
                                           <label for="image"><span style="color:red;">KTP Semua Anak Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
                                         <?php else : ?>
                                             <strong> File : </strong>

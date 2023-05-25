@@ -46,7 +46,7 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if ($isbat['file_bukti_bayar_isbat'] === NULL) : ?>
+                                        <?php if ($isbat['file_bukti_bayar_isbat'] == NULL) : ?>
                                           <label for="image"><span style="color:red;">Bukti Bayar Isbat Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
                                         <?php else : ?>
                                             <strong> File : </strong>

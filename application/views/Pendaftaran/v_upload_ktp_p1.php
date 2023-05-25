@@ -46,7 +46,7 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if ($diska['file_ktp_p1'] === NULL) : ?>
+                                        <?php if ($diska['file_ktp_p1'] == NULL) : ?>
                                           <label for="image"><span style="color:red;">KTP Pemohon 1 Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
                                         <?php else : ?>
                                             <strong> File : </strong>

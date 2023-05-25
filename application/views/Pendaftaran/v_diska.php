@@ -39,6 +39,7 @@
             <span>File Scan Akta Lahir Anak</span><br/>
             <span>File Scan Akta Lahir Calon</span><br/>
             <span>File Scan Ijazah Terakhir Anak</span><br/>
+            <span>File Scan Surat Penolakan dari KUA</span><br/>
             <span>File Scan Permohonan Yang Telah Bertanda Tangan*</span><br/>
             <span>File Scan Bukti Bayar (nomor rekening BSI<i style="color:green"> 7011218061 </i>a.n. RPL 073 PA Bojonegoro)</span>
           </blockquote>
@@ -131,6 +132,13 @@
                       <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php }else{?>
                       <a href="<?php echo base_url('pendaftaran/upload_ijazah_anak/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php } ?>
+                      <br>
+                      Penolakan KUA
+                      <?php if($hasil['file_penolakan'] == NULL) { ?>
+                      <a href="<?php echo base_url('pendaftaran/upload_penolakan/' .$hasil['kode']) ?>" class="btn btn-danger btn-xs" title="KK"><i class="fas fa-upload"></i></a>
+                      <?php }else{?>
+                      <a href="<?php echo base_url('pendaftaran/upload_penolakan/' .$hasil['kode']) ?>" class="btn btn-success btn-xs" title="KK"><i class="fas fa-upload"></i></a>
                       <?php } ?>
                       <br>
                       Permohonan

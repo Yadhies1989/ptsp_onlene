@@ -43,7 +43,7 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if ($isbat['file_surat_mati'] === NULL) : ?>
+                                        <?php if ($isbat['file_surat_mati'] == NULL) : ?>
                                           <label for="image"><span style="color:red;">Surat Kematian Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
                                         <?php else : ?>
                                             <strong> File : </strong>

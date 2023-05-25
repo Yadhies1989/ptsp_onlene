@@ -46,11 +46,11 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if ($diska['file_bukti_bayar_diska'] === NULL) : ?>
+                                        <?php if ($diska['file_bukti_bayar_diska'] == NULL) : ?>
                                           <label for="image"><span style="color:red;">Bukti Bayar Masih Kosong, Silahkan Upload Dengan Klik Tombol Di Bawah!</span></label>
                                         <?php else : ?>
                                             <strong> File : </strong>
-                                            <a href="<?php echo base_url() . 'uploads/' . $diska['file_permohonan']; ?>" target="_blank">
+                                            <a href="<?php echo base_url() . 'uploads/' . $diska['file_bukti_bayar_diska']; ?>" target="_blank">
                                                 Lihat File
                                             </a>
                                         <?php endif; ?>
