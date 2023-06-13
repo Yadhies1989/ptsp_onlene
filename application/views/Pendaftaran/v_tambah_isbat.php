@@ -86,13 +86,7 @@
                     <label for="agama_p1" class="col-sm-4 col-form-label col-form-label-sm">Agama</label>
                     <div class="col-sm-8">
                       <select class="form-control custom-select" name="agama_p1" required>
-                        <option selected disabled>---Pilih---</option>
-                        <option>Islam</option>
-                        <option>Kristen</option>
-                        <option>Katolik</option>
-                        <option>Budha</option>
-                        <option>Hindu</option>
-                        <option>Konghuchu</option>
+                        <option selected>Islam</option>
                       </select>
                     </div>
                   </div>
@@ -221,13 +215,7 @@
                     <label for="agama_p2" class="col-sm-4 col-form-label col-form-label-sm">Agama</label>
                     <div class="col-sm-8">
                       <select class="form-control custom-select" name="agama_p2" required>
-                        <option selected disabled>---Pilih---</option>
-                        <option>Islam</option>
-                        <option>Kristen</option>
-                        <option>Katolik</option>
-                        <option>Budha</option>
-                        <option>Hindu</option>
-                        <option>Konghuchu</option>
+                        <option selected>Islam</option>
                       </select>
                     </div>
                   </div>
@@ -413,13 +401,7 @@
                     <label for="agama_saksi1" class="col-sm-4 col-form-label col-form-label-sm">Agama Saksi 1</label>
                     <div class="col-sm-8">
                       <select class="form-control custom-select" name="agama_saksi1" required>
-                        <option selected disabled>---Pilih---</option>
-                        <option>Islam</option>
-                        <option>Kristen</option>
-                        <option>Katolik</option>
-                        <option>Budha</option>
-                        <option>Hindu</option>
-                        <option>Konghuchu</option>
+                        <option selected>Islam</option>
                       </select>
                     </div>
                   </div>
@@ -458,13 +440,7 @@
                     <label for="agama_saksi2" class="col-sm-4 col-form-label col-form-label-sm">Agama Saksi 2</label>
                     <div class="col-sm-8">
                       <select class="form-control custom-select" name="agama_saksi2" required>
-                        <option selected disabled>---Pilih---</option>
-                        <option>Islam</option>
-                        <option>Kristen</option>
-                        <option>Katolik</option>
-                        <option>Budha</option>
-                        <option>Hindu</option>
-                        <option>Konghuchu</option>
+                        <option selected>Islam</option>
                       </select>
                     </div>
                   </div>
